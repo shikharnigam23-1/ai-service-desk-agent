@@ -1,0 +1,8 @@
+# Starting list for Sprint 1. Versions are pinned after the first working install.
+pandas
+numpy
+scikit-learn
+matplotlib
+jupyter
+python-dotenv
+psycopg[binary]

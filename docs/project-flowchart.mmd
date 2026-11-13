@@ -1,0 +1,42 @@
+flowchart TD
+    %% AI Service Desk Agent + SLA Analytics — solution flow (v0.1, Sprint 0)
+    %% Fictional engagement: Nimbus IT Services runs the L1 desk for FinServ Bank
+
+    subgraph INTAKE["1 · Intake"]
+        A["Bank employee raises ticket<br/>(n8n Form)"] --> B["n8n webhook receives ticket"]
+    end
+
+    subgraph AGENT["2 · AI triage agent (n8n + Gemini)"]
+        B --> C["Gemini returns structured JSON<br/>category · priority · summary · confidence"]
+        C --> D{"Valid JSON?<br/>(1 retry)"}
+        D -- "No" --> H
+        D -- "Yes" --> E{"Duplicate of an open ticket<br/>in last 2 hrs?"}
+        E -- "Yes" --> E1["Link to parent incident<br/>(known-issue reply)"]
+        E -- "No" --> F{"Confidence ≥ threshold?<br/>(value TBD · Sprint 2)"}
+        F -- "No" --> H["Human review queue<br/>L1 agent approves / corrects"]
+        F -- "Yes" --> G{"Safe auto-resolve intent?<br/>(password reset / unlock)"}
+        G -- "Yes" --> G1["Send KB steps<br/>mark auto-resolved"]
+        G -- "No" --> I["Draft reply from KB<br/>route to resolver group"]
+        H --> I
+    end
+
+    subgraph DATA["3 · Data store (Supabase Postgres)"]
+        J[("tickets · agent_runs<br/>review_queue · kb_articles")]
+    end
+
+    E1 --> J
+    G1 --> J
+    I --> J
+
+    subgraph ML["4 · SLA-breach risk (Python / sklearn)"]
+        U["UCI ServiceNow event log<br/>(CC BY 4.0, 24,918 incidents)"] --> T["Train model on<br/>open-time features only"]
+        T --> K["Batch-score open tickets<br/>→ sla_predictions"]
+    end
+
+    J --> K
+    K --> J
+
+    subgraph BI["5 · Insights"]
+        J --> L["SQL views<br/>volume · MTTR · SLA % · accuracy"]
+        L --> M["Power BI dashboard<br/>(manager / client view)"]
+    end
