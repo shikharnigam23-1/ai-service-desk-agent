@@ -1,8 +1,9 @@
-# Starting list for Sprint 1. Versions are pinned after the first working install.
-pandas
-numpy
-scikit-learn
-matplotlib
-jupyter
-python-dotenv
-psycopg[binary]
+# Pinned to the versions in use (D-44). Python 3.9.6.
+pandas==2.3.3
+numpy==2.0.2
+scikit-learn==1.6.1
+joblib==1.5.3
+matplotlib==3.9.4
+jupyter==1.1.1
+python-dotenv==1.2.1
+psycopg[binary]==3.2.13

@@ -1,0 +1,164 @@
+{
+  "model_version": "v1",
+  "trained_on": "2026-11-17",
+  "seed": 42,
+  "target": "breach = NOT made_sla (last event)",
+  "split_date": "2016-05-11",
+  "calibration": {
+    "method": "sigmoid",
+    "slice_start": "2016-04-21",
+    "slice_end_exclusive": "2016-05-11"
+  },
+  "features": [
+    "contact_type",
+    "category",
+    "subcategory",
+    "u_symptom",
+    "impact",
+    "urgency",
+    "priority",
+    "assignment_group",
+    "open_weekday",
+    "open_hour"
+  ],
+  "rare_level_grouping": {
+    "min_level_count": 50,
+    "levels_kept": {
+      "subcategory": 44,
+      "u_symptom": 27
+    }
+  },
+  "excluded_fields": {
+    "incident_state": "post-open: workflow state changes as the ticket is worked",
+    "active": "post-open: turns false when the ticket closes",
+    "reassignment_count": "post-open: running counter",
+    "reopen_count": "post-open: running counter",
+    "sys_mod_count": "post-open: running counter of updates",
+    "made_sla": "post-open: this is the target (last event); never a feature",
+    "sys_updated_by": "post-open: who made each later update",
+    "sys_updated_at": "post-open: time of each later update",
+    "assigned_to": "post-open: set when the ticket is picked up (EDA: never use)",
+    "closed_code": "post-open: resolution field, back-filled onto every row",
+    "resolved_by": "post-open: resolution field, back-filled onto every row",
+    "resolved_at": "post-open: resolution field, back-filled onto every row",
+    "closed_at": "post-open: closure field, back-filled onto every row",
+    "problem_id": "post-open: linked later; almost entirely missing",
+    "rfc": "post-open: linked later; almost entirely missing",
+    "vendor": "post-open: linked later; almost entirely missing",
+    "caused_by": "post-open: linked later; almost entirely missing",
+    "u_priority_confirmation": "post-open: confirmation step after open; not verified as open-time",
+    "notify": "post-open: notification setting; not verified as open-time",
+    "knowledge": "dropped by D-53: flags tickets opened before 2016-03-11, a date proxy",
+    "number": "identifier",
+    "caller_id": "identifier, high cardinality; not in the FR-16 candidate list",
+    "opened_by": "identifier, high cardinality; not in the FR-16 candidate list",
+    "sys_created_by": "identifier; not in the FR-16 candidate list",
+    "sys_created_at": "duplicate of opened_at; the raw date would act as a date proxy",
+    "location": "not in the FR-16 candidate list; high cardinality",
+    "cmdb_ci": "almost entirely missing"
+  },
+  "rows": {
+    "train_total": 19933,
+    "fit": 14955,
+    "calibration": 4978,
+    "test": 4985
+  },
+  "breach_rate": {
+    "train_total": 0.3997,
+    "fit": 0.4632,
+    "calibration": 0.2091,
+    "test": 0.2301
+  },
+  "threshold_for_precision_recall": 0.5,
+  "metrics_test": {
+    "baseline_logreg": {
+      "before_calibration": {
+        "roc_auc": 0.7657,
+        "pr_auc": 0.5156,
+        "brier": 0.187,
+        "mean_predicted_risk": 0.4233,
+        "precision_at_0.5": 0.4441,
+        "recall_at_0.5": 0.6164
+      },
+      "after_calibration": {
+        "roc_auc": 0.7657,
+        "pr_auc": 0.5156,
+        "brier": 0.1475,
+        "mean_predicted_risk": 0.2391,
+        "precision_at_0.5": 0.6008,
+        "recall_at_0.5": 0.2598
+      }
+    },
+    "main_hgb": {
+      "before_calibration": {
+        "roc_auc": 0.7695,
+        "pr_auc": 0.5226,
+        "brier": 0.1828,
+        "mean_predicted_risk": 0.4138,
+        "precision_at_0.5": 0.4374,
+        "recall_at_0.5": 0.6094
+      },
+      "after_calibration": {
+        "roc_auc": 0.7695,
+        "pr_auc": 0.5226,
+        "brier": 0.146,
+        "mean_predicted_risk": 0.2354,
+        "precision_at_0.5": 0.6308,
+        "recall_at_0.5": 0.2502
+      }
+    }
+  },
+  "top_features_main_model": [
+    {
+      "feature": "assignment_group",
+      "roc_auc_drop_when_shuffled": 0.1277
+    },
+    {
+      "feature": "priority",
+      "roc_auc_drop_when_shuffled": 0.0356
+    },
+    {
+      "feature": "u_symptom",
+      "roc_auc_drop_when_shuffled": 0.0333
+    },
+    {
+      "feature": "subcategory",
+      "roc_auc_drop_when_shuffled": 0.0146
+    },
+    {
+      "feature": "category",
+      "roc_auc_drop_when_shuffled": 0.0074
+    },
+    {
+      "feature": "open_hour",
+      "roc_auc_drop_when_shuffled": 0.0047
+    },
+    {
+      "feature": "open_weekday",
+      "roc_auc_drop_when_shuffled": 0.0019
+    },
+    {
+      "feature": "impact",
+      "roc_auc_drop_when_shuffled": 0.0006
+    },
+    {
+      "feature": "contact_type",
+      "roc_auc_drop_when_shuffled": 0.0
+    },
+    {
+      "feature": "urgency",
+      "roc_auc_drop_when_shuffled": -0.0001
+    }
+  ],
+  "saved_model": {
+    "file": "breach_model_v1.joblib",
+    "what": "main_hgb, calibrated",
+    "size_kb": 147.0
+  },
+  "library_versions": {
+    "pandas": "2.3.3",
+    "numpy": "2.0.2",
+    "scikit-learn": "1.6.1",
+    "joblib": "1.5.3"
+  }
+}

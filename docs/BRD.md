@@ -167,7 +167,7 @@ The SRS will break each of these into functional and non-functional requirements
 | ID | Assumption | Value |
 |---|---|---|
 | A1 | Manual triage time per ticket today | 6 min |
-| A2 | Baseline SLA compliance | 88% (5% credit tier) |
+| A2 | Baseline SLA compliance | 88% (5% credit tier, D-25). Comparison point: UCI `made_sla` compliance ≈ 63% (Sprint 1 EDA). 88% stays the base case because UCI is a different organisation with a different SLA setup |
 | A3 | Share of tickets that are password reset or unlock | 15% (≈ 750/month) |
 | A4 | SLA compliance target after go-live | 95% (clears all credit tiers) |
 | A5 | Handling time for a reset or unlock today (triage included) | 10 min |
@@ -179,6 +179,8 @@ The SRS will break each of these into functional and non-functional requirements
 | — | Conversion used for FTE | 1 FTE = 176 hrs/month (8 h × 22 days) |
 
 **Hypothesis to test (Sprint 1):** faster, more consistent triage and fewer reassignments are what lift SLA compliance from 88% to 95%. The UCI event log has reassignment and SLA fields, so the EDA will check whether reassignments are linked to breaches. If they are not, the SLA claim in BO-1 will be revised.
+
+**Sprint 1 result (EDA, 17 Nov 2026):** the link holds as an association only, not causation. In the UCI log the breach rate rises with each reassignment (22% with none, 43% with one, 60% with two, 91% with six or more), but a ticket that stays open longer also has more time to be reassigned (`docs/eda-findings.md`, answer 5).
 
 ### 9.3 Constraints
 - **Free tools only for the build:** n8n 2.47.4 (Docker), Gemini free tier, Supabase free tier, Power BI Desktop.

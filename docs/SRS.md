@@ -159,7 +159,7 @@ The system shall run the 100-ticket labelled evaluation set through the agent an
 ### 3.7 SLA-breach risk model
 
 **FR-16 — Train on open-time features** · Must · BR-07
-The system shall train a breach-risk classifier on the UCI event log using only open-time features (candidate list: contact type, category, subcategory, symptom, impact, urgency, priority, assignment group, knowledge flag, opening hour/day — confirmed in Sprint 1 EDA). The target is breach = not `made_sla` (direction confirmed in EDA).
+The system shall train a breach-risk classifier on the UCI event log using only open-time features (candidate list: contact type, category, subcategory, symptom, impact, urgency, priority, assignment group, opening hour/day — confirmed in Sprint 1 EDA; the knowledge flag was removed by D-53 because it acts as a date proxy). The target is breach = not `made_sla` (direction confirmed in EDA).
 *User story:* As the desk manager, I want a risk score at open time so that I can act before a ticket breaches.
 - **Given** the feature list, **then** a written leakage check confirms no feature is set after the ticket opens.
 - **Given** a time-based train/test split, **then** recall, precision and PR-AUC on the test set are saved with the model version.
