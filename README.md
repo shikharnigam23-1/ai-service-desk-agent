@@ -4,7 +4,7 @@ An AI triage agent with human review, an SLA-breach risk model and a Power BI da
 
 > **Disclaimer:** Nimbus IT Services and FinServ Bank are fictional. This is a portfolio project by Shikhar Nigam (IIM MBA 2025–27). All data is public (UCI, Kaggle) or synthetic.
 
-**Status:** Sprint 0 done (BRD and SRS v1.0 signed off; v1.1 adds Sprint 1 EDA updates) · Sprints 1–3 in progress
+**Status:** Sprint 1 complete: EDA, breach model v1, database schema · Sprint 0 done (BRD and SRS signed off, now v1.1) · Sprints 2–3 next
 
 ---
 
