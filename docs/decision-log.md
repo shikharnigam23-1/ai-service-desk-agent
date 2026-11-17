@@ -53,6 +53,7 @@ Status key: ✅ decided · ⏳ pending
 | D-46 | 12 Nov 2026 | README style | Recruiter-first / technical-first | Recruiter-first (problem → solution → impact, then setup) | Fits the BA + Consulting framing (D-07) |
 | D-47 | 12 Nov 2026 | `.gitignore` and `.env.example` | As shown / also ignore model + .pbix | As shown; trained model and `.pbix` are committed | Reviewers can open the dashboard and model without rebuilding |
 | D-48 | 12 Nov 2026 | How starter files reach the repo | Connect folder / download files / Claude Code prompt / zip + terminal | Zip download + one terminal block (owner switched from "connect folder") | Owner runs every step himself and reviews before the first commit |
+| D-49 | 17 Nov 2026 | PDF copies of BRD and SRS | Consulting style / plain GitHub style / black + neon; Claude places files / files sent in chat | Consulting-style A4 PDFs at `docs/pdf/BRD.pdf` and `docs/pdf/SRS.pdf`, linked from the README; Claude places the files, owner commits and pushes | Recruiters can open or download a formatted document in one click; white pages print well and read formal |
 
 ## Constraints found during setup (Sprint 0)
 - **Gemini free tier (owner's AI Studio, 12 Nov 2026):** 3.5 Flash Lite and 3.1 Flash Lite: 15 RPM, 250K TPM, 500 RPD. 2.5 Flash, 3 Flash, 3.6 Flash, 3.8 Flash: 5 RPM, 20 RPD. Pro models: not available. Daily quota resets at midnight Pacific (≈ 1:30 PM IST).

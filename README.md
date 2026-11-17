@@ -90,8 +90,8 @@ flowchart TD
 | Breach-model recall | Set after EDA | *Sprint 1* |
 
 ## Business documents
-- [Business Requirements Document (BRD)](docs/BRD.md): problem, objectives, stakeholder map, RACI, business case with sensitivity, risks
-- [Software Requirements Specification (SRS)](docs/SRS.md): 19 functional and 13 non-functional requirements, acceptance criteria, traceability matrix
+- [Business Requirements Document (BRD)](docs/BRD.md) · [PDF](docs/pdf/BRD.pdf): problem, objectives, stakeholder map, RACI, business case with sensitivity, risks
+- [Software Requirements Specification (SRS)](docs/SRS.md) · [PDF](docs/pdf/SRS.pdf): 19 functional and 13 non-functional requirements, acceptance criteria, traceability matrix
 - [Decision log](docs/decision-log.md): every project decision, with the options considered and the reason
 
 Method: Hybrid SDLC, with requirements signed off upfront and then 1-day build sprints.
