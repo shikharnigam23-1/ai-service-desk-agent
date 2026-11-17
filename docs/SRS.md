@@ -3,10 +3,11 @@
 
 | | |
 |---|---|
-| **Document** | SRS v1.0 (Approved by owner, 12 Nov 2026) |
-| **Date** | 12 Nov 2026 |
+| **Document** | SRS v1.1 (v1.0 approved by owner, 12 Nov 2026) |
+| **Date** | 17 Nov 2026 |
+| **Changes in v1.1** | FR-16: knowledge flag removed from the candidate features (D-53). No other requirement changed |
 | **Author** | Shikhar Nigam, Business Analyst, Nimbus IT Services |
-| **Parent document** | `BRD.md` v1.0 (approved 12 Nov 2026) |
+| **Parent document** | `BRD.md` v1.1 (v1.0 approved 12 Nov 2026) |
 | **Related** | `decision-log.md` · `project-flowchart.mmd` |
 | **Format** | IEEE 830-lite "shall" statements + user stories; acceptance criteria in Given/When/Then |
 

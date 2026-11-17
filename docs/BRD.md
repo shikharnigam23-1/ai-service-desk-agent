@@ -3,12 +3,13 @@
 
 | | |
 |---|---|
-| **Document** | BRD v1.0 (Approved by owner, 12 Nov 2026) |
-| **Date** | 12 Nov 2026 |
+| **Document** | BRD v1.1 (v1.0 approved by owner, 12 Nov 2026) |
+| **Date** | 17 Nov 2026 |
+| **Changes in v1.1** | §9.2: A2 compared with UCI compliance (≈ 63%), 88% kept as base case; Sprint 1 result for the reassignment hypothesis (association only, D-52). No change to scope, objectives or business case |
 | **Author** | Shikhar Nigam, Business Analyst, Nimbus IT Services |
 | **Client** | FinServ Bank (BFSI) |
 | **Methodology** | Hybrid: BRD/SRS signed off upfront, then 1-day build sprints |
-| **Related** | `SRS.md` (to follow) · `decision-log.md` · `project-flowchart.mmd` |
+| **Related** | `SRS.md` · `decision-log.md` · `project-flowchart.mmd` |
 
 > **Disclaimer:** Nimbus IT Services and FinServ Bank are fictional. This is a portfolio project. All data is public (UCI, Kaggle) or simulated. Figures marked *assumption* have not been checked against industry benchmarks.
 
