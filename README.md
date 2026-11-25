@@ -122,9 +122,9 @@ n8n 2.47.4 (Docker) · Gemini 3.5 Flash Lite (fallback 3.1 Flash Lite) · Supaba
 
 ## Data and credits
 - **UCI "Incident management process enriched event log"**, UCI Machine Learning Repository, licensed CC BY 4.0. *Citation and authors: to be copied from the UCI page.*
-- **Kaggle "IT Service Ticket Classification"**: CC0 *(to confirm on download)*. *Link to be added.*
+- **Kaggle "IT Service Ticket Classification"** ([dataset page](https://www.kaggle.com/datasets/adisongoh/it-service-ticket-classification-dataset)), licensed CC0 (public domain). File used: `all_tickets_processed_improved_v3.csv`, 47,837 tickets, 8 categories (`Topic_group`). The text is pre-processed (lower-case, stopwords removed, names masked). It is the source for the category list and for the 100-ticket evaluation set, whose tickets are rewritten as subject + description (D-76).
 
-Raw files are not committed. Only small samples and the 100-ticket evaluation set are.
+Raw files are not committed (`data/raw/` is git-ignored, D-74). Download them from the links above into `data/raw/`. Only small samples and the 100-ticket evaluation set are committed.
 
 ## Licence
 MIT, covering code and documents. Datasets keep their own licences.

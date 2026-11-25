@@ -1,12 +1,14 @@
 # sql/ — Supabase database (SRS §5)
 
-Run the three files in order in the Supabase SQL Editor. All are safe to re-run.
+Run the four files in order in the Supabase SQL Editor. All are safe to re-run.
 
 | Order | File | What it does |
 |---|---|---|
 | 1 | `01_schema.sql` | Creates the 7 tables, their links, value rules (CHECK) and indexes |
 | 2 | `02_security.sql` | Turns on row-level security for every table (NFR-04) |
-| 3 | `03_seed.sql` | Adds config rows to `settings` (NFR-11). `category_routing` is a TODO for Sprint 2 |
+| 3 | `03_seed.sql` | Adds config rows to `settings` (NFR-11) |
+| 4 | `04_seed_category_routing.sql` | Adds the 8 Kaggle categories and their 7 resolver groups (FR-11, D-75) |
+| 5 | `05_seed_kb_articles.sql` | Adds the 15 approved KB articles; 2 are auto-resolve (FR-09, FR-13, D-83) |
 | — | `check_connection.py` | Lists every table with its row count and RLS status |
 
 Check from your machine (needs `SUPABASE_DB_URL` in `.env`):
@@ -111,6 +113,6 @@ erDiagram
 ## Notes
 
 - **Security:** RLS is on with no policies, so the public key sees nothing. n8n and Python use the service key or the database login; keys live only in `.env`.
-- **Categories:** `tickets.final_category` and `kb_articles.category` must exist in `category_routing`, which is empty until the Kaggle names are verified (Sprint 2).
+- **Categories:** `tickets.final_category` and `kb_articles.category` must exist in `category_routing`, which holds the 8 exact Kaggle `Topic_group` names (seeded by `04_seed_category_routing.sql`).
 - **Free tier:** Supabase pauses a project after about a week without use. Restore it from the dashboard before a demo.
 - **Changing a table later:** `IF NOT EXISTS` skips tables that already exist, so column changes need an `ALTER TABLE` statement.
