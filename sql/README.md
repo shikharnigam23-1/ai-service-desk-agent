@@ -1,6 +1,6 @@
 # sql/ — Supabase database (SRS §5)
 
-Run the four files in order in the Supabase SQL Editor. All are safe to re-run.
+Run the seven SQL files in order in the Supabase SQL Editor. All are safe to re-run.
 
 | Order | File | What it does |
 |---|---|---|
@@ -9,6 +9,8 @@ Run the four files in order in the Supabase SQL Editor. All are safe to re-run.
 | 3 | `03_seed.sql` | Adds config rows to `settings` (NFR-11) |
 | 4 | `04_seed_category_routing.sql` | Adds the 8 Kaggle categories and their 7 resolver groups (FR-11, D-75) |
 | 5 | `05_seed_kb_articles.sql` | Adds the 15 approved KB articles; 2 are auto-resolve (FR-09, FR-13, D-83) |
+| 6 | `06_add_intent.sql` | Adds `agent_runs.intent` for auto-resolve and edge cases (FR-13, FR-06, D-84) |
+| 7 | `07_kb_intent.sql` | Adds `kb_articles.intent` and sets it on the 2 auto-resolve articles; the workflow matches on intent + category (FR-13, D-90) |
 | — | `check_connection.py` | Lists every table with its row count and RLS status |
 
 Check from your machine (needs `SUPABASE_DB_URL` in `.env`):
@@ -58,6 +60,7 @@ erDiagram
         numeric confidence
         text outcome
         integer latency_ms
+        text intent
         timestamptz created_at
     }
     review_queue {
@@ -77,6 +80,7 @@ erDiagram
         text category FK
         text steps
         boolean is_auto_resolve
+        text intent
         timestamptz updated_at
     }
     category_routing {
@@ -106,6 +110,8 @@ erDiagram
 | `tickets.final_priority` | P1, P2, P3, P4 |
 | `tickets.reply_status` | draft, sent |
 | `agent_runs.outcome` | ok, retry, fallback, failed |
+| `agent_runs.intent` | password_reset, account_unlock, unclear, other (or empty) |
+| `kb_articles.intent` | password_reset, account_unlock (or empty) |
 | `review_queue.status` | pending, approved, corrected |
 | `review_queue.reason` | low_confidence, invalid_output, ai_unavailable, edge_case |
 | `sla_predictions.risk_band` | High, Medium, Low |
